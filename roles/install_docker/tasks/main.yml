@@ -1,22 +1,3 @@
-- name: "run apt update"
-  apt:
-    name: '*'
-    state: latest
-
-  vars:
-    container_count: 2
-    default_container_name: docker
-    default_container_image: ubuntu
-    default_container_command: sleep 1
-    username: team2_user
-    folder_path: /home/{{ username }}/team2_repo
-
-- name: Install aptitude
-  apt:
-    name: aptitude
-    state: latest
-    update_cache: true
-
 - name: Install required system packages
   apt:
     pkg:

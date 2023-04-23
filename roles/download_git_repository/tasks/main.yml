@@ -2,7 +2,7 @@
 - name: "Clone a github repository"
   git:
     #repo: https://github.com/SDaiva/Final_assignment_Team2
-    repo: https://github.com/SDaiva/test_solution
+    repo: https://github.com/SDaiva/FINAL_ASSIGNMENT
     dest: /home/ubuntu/final_assignment2
     version: main
 #    clone: yes

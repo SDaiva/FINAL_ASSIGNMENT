@@ -4,9 +4,9 @@
 
 
   roles:
-   - users
-   - install_docker #runs updated and installs docker
-   - download_git_repository
+  # - users
+   #- install_docker #runs updated and installs docker
+   #- download_git_repository
    - run_docker_mysql_python_containers
    - restore_mysql
    #- delete_repository_information

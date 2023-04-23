@@ -1,7 +1,7 @@
 - name: Wait for MySQL container to become ready
   wait_for:
     host: "localhost"
-    port: 3308
+    port: 3306
     delay: 20
     timeout: 120
 

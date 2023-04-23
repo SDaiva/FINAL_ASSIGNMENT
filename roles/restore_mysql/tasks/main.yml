@@ -7,7 +7,7 @@
 
 
 - name: Copy backup_file1.sql from host to mysql container
-  command: docker cp /home/ubuntu/final_assignment2/docker/backup_file1.sql mysql:/tmp/backup_file1.sql
+  command: docker cp /home/ubuntu/final_assignment2/docker/backup_file1.sql mysql1:/tmp/backup_file1.sql
  # command: docker cp /home/ubuntu/final_assignment2/docker/backup.sql mysql1:/tmp/backup.sql
 
 - name: Import backup.sql into MySQL container

@@ -1,0 +1,54 @@
+- name: "create user team2_user"
+  ansible.builtin.user:
+      name: team2_user
+      state: present
+      create_home: yes
+      password_lock: yes
+
+- name: create folder
+  ansible.builtin.file:
+    path: /home/team2_user/.ssh
+    owner: team2_user
+    group: team2_user
+    mode: '0700'
+    state: directory
+
+- name: Uploading ssh key
+  copy:
+    src: "team2.pub"
+    dest: "/home/team2_user/.ssh"
+    mode: '0700'
+
+- name: "set correct ownership and permissions for user directory"
+  ansible.builtin.file:
+    path: /home/team2_user
+    state: directory
+    owner: team2_user
+    group: team2_user
+    mode: '0700'
+
+- name: Ensure PubkeyAuthentication is set to yes in sshd_config
+  ansible.builtin.lineinfile:
+    path: /etc/ssh/sshd_config
+    regexp: '^#?PubkeyAuthentication'
+    line: "PubkeyAuthentication yes"
+#  notify: restart sshd
+
+- name: Set authorized key taken from file
+  ansible.posix.authorized_key:
+    user: team2_user
+    state: present
+    key: "{{ lookup('file','/home/sgtuser/team2.pub') }}"
+
+- name: restart sshd
+  ansible.builtin.systemd:
+    name: sshd
+    state: restarted
+    daemon_reload: yes
+
+#- handlers:
+ # - name: restart sshd
+  #  ansible.builtin.systemd:
+   #   name: sshd
+    #  state: restarted
+     # daemon_reload: yes

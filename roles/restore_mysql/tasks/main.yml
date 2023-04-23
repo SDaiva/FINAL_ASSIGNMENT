@@ -1,0 +1,36 @@
+- name: Wait for MySQL container to become ready
+  wait_for:
+    host: "localhost"
+    port: 3306
+    delay: 20
+    timeout: 120
+
+
+- name: Copy backup.sql from host to MySQL container
+  command: docker cp /home/ubuntu/final_assignment2/docker/backup_file1.sql mysql:/tmp/backup_file1.sql
+
+- name: Import backup_file1.sql into MySQL container
+  shell: docker exec -i mysql bash -c 'cat /tmp/backup_file1.sql | mysql -u root -ppassword Assignment_database'
+  args:
+    executable: /bin/bash
+
+
+
+
+
+
+
+#name: Restore MySQL database from dump file
+#become: true
+#become_user: mysql #maybe team2_user?
+#command: mysql -u root -p{{ mysql_root_password }} {{ Assignment_database }} < /var/lib/mysql:rw" #/path/to/local/directory/dumpfile.sql
+  
+  #Replace mysql_root_password with the password for the root MySQL user, and database_name with the name of the database you want to restore.
+
+#Run the playbook using the ansible-playbook command:
+
+ # ansible-playbook your_playbook.yml
+  
+  #Replace your_playbook.yml with the name of the playbook file you created.
+  
+  #Once the playbook as run successfully, the MySQL database should be restored from the dump file located on the GitHub repository.

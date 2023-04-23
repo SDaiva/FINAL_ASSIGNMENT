@@ -1,0 +1,6 @@
+- name: Run Docker Compose in a specific directory
+  command: sudo docker-compose up -d
+  args:
+    chdir: /home/ubuntu/final_assignment2/docker
+  become: true
+  become_user: root

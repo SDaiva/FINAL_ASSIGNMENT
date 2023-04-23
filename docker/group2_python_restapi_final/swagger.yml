@@ -1,0 +1,85 @@
+openapi: 3.0.0
+info:
+  title: Cars Registration Catalog
+  description: Information about cars registration
+  version: 1.0.0
+servers:
+  - url: /api
+
+paths:
+  /Cars:
+    get:
+      summary: Get all information about car registration
+      operationId: api.read_all
+      responses:
+        "200":
+          description: Successfully retrieved information about car registration
+    post:
+      summary: Create a new car registration
+      operationId: api.create_instance
+      requestBody:
+        description: Create a new car ID
+        content:
+          application/json:
+            schema:
+              x-body-name: instances
+              $ref: "#/components/schemas/Instance"
+      responses:
+        "201":
+          description: Successfully created
+        "409":
+          description: Provided car ID already exists
+  /instances/{name}:
+    get:
+      summary: Read one instance
+      operationId: api.read_one_instance
+      parameters:
+        - $ref: "#/components/parameters/name"
+      responses:
+        "200":
+          description: Successfully read one car information
+    delete:
+      summary: Delete one entry
+      operationId: api.delete_instance
+      parameters:
+        - $ref: "#/components/parameters/name"
+      responses:
+        "200":
+          description: Successfully deleted Car entry
+        "404":
+          description: Car ID does not exist
+    put:
+      summary: Update Car information
+      operationId: api.update_instance
+      parameters:
+        - $ref: "#/components/parameters/name"
+      requestBody:
+        description: Create a new entry
+        content:
+          application/json:
+            schema:
+              x-body-name: instance
+              $ref: "#/components/schemas/Instance"
+      responses:
+        "200":
+          description: Car infomation updated successfully
+components:
+  schemas:
+    Instance:
+      required:
+        - CarID
+      properties:
+        name:
+          type: string
+        ami:
+          type: string
+        region:
+          type: string
+  parameters:
+    name:
+      name: CarID
+      description: Car ID number
+      in: path
+      required: true
+      schema:
+        type: string

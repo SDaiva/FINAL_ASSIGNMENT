@@ -1,15 +1,24 @@
 - name: Wait for MySQL container to become ready
   wait_for:
     host: "localhost"
-    port: 3306
+    port: 3308
     delay: 20
     timeout: 120
 
 
 - name: Copy backup_file1.sql from host to mysql container
-  command: sudo docker cp /home/ubuntu/final_assignment2/docker/backup_file1.sql mysql:/tmp/backup_file1.sql
+#  command: docker cp /home/ubuntu/final_assignment2/docker/backup_file1.sql mysql:/tmp/backup_file1.sql
+  command: docker cp /home/ubuntu/final_assignment2/docker/backup.sql mysql:/tmp/backup.sql
 
-- name: Import backup_file1.sql into mysql container
-  shell: sudo docker exec -i mysql bash -c 'cat /tmp/backup_file1.sql | mysql -u root -ppassword Assignment_database'
+- name: Import backup.sql into MySQL container
+  shell: docker exec -i mysql_final bash -c 'cat /tmp/backup.sql | mysql -u root -ppassword Assignment_database'
   args:
     executable: /bin/bash
+
+
+#- name: Import backup_file1.sql into mysql container
+#  shell: docker exec -i mysql_final bash -c 'cat /tmp/backup.sql | mysql -u root -ppassword db'
+#  shell: docker exec -i mysql bash -c 'cat /tmp/backup_file1.sql | mysql -u root -ppassword Assignment_database'
+#  shell: docker exec -i mysql bash -c 'cat /tmp/backup.sql | mysql -u root -ppassword Assignment_database'
+#  args:
+#    executable: /bin/bash

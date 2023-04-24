@@ -6,7 +6,7 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: config('DB_PASSWORD')
       MYSQL_DATABASE: config('DB_NAME')
-      MYSQL_USER: config('DB_USER')
+      MYSQL_USER: config('DB_USER1')
       MYSQL_PASSWORD: config('DB_PASSWORD')
     ports:
       - '3308:3306'

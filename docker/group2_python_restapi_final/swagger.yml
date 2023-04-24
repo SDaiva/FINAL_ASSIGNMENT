@@ -29,7 +29,7 @@ paths:
           description: Successfully created
         "409":
           description: Provided car ID already exists
-  /cars/{name}:
+  /cars/{carid}:
     get:
       summary: Read one instance
       operationId: api.read_one_instance
@@ -67,16 +67,16 @@ components:
   schemas:
     Car:
       required:
-        - regnumber
+        - reg_number
       properties:
-        enginetype:
-            type: string
-        regnumber:
-            type: string
+        engine_type:
+          type: string
+        reg_number:
+          type: string
         vin:
-            string
+          type: string
   parameters:
-    name:
+    carid:
       name: carid
       description: Car ID number
       in: path

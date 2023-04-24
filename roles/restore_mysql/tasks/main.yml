@@ -12,6 +12,6 @@
 
 - name: Import backup_file1.sql into MySQL container
 
-  shell: docker exec -i mysql1 bash -c 'cat /tmp/backup_file1.sql | mysql -u root -ppassword Assignment_database'
+  shell: sudo docker exec -i mysql1 bash -c 'cat /tmp/backup_file1.sql | mysql -u root -pqwerty assignment_database'
   args:
     executable: /bin/bash

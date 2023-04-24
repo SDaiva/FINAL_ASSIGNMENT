@@ -4,10 +4,10 @@ services:
     image: mysql:latest
     container_name: mysql1
     environment:
-      MYSQL_ROOT_PASSWORD: config('DB_PASSWORD')
-      MYSQL_DATABASE: config('DB_NAME')
-      MYSQL_USER: config('DB_USER')
-      MYSQL_PASSWORD: config('DB_PASSWORD')
+      MYSQL_ROOT_PASSWORD: qwerty
+      MYSQL_DATABASE: assignment_database
+      MYSQL_USER: team2_user
+      MYSQL_PASSWORD: qwerty
     ports:
       - '3308:3306'
     volumes:

@@ -67,7 +67,7 @@ components:
   schemas:
     Car:
       required:
-        - reg_number
+        - Reg_Number
       properties:
         engine_type:
           type: string

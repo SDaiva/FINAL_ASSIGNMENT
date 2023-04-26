@@ -7,7 +7,7 @@ servers:
   - url: /api
 
 paths:
-  /cars:
+  /Cars:
     get:
       summary: Get all information about car registration
       operationId: api.read_all
@@ -15,26 +15,26 @@ paths:
         "200":
           description: Successfully retrieved information about car registration
     post:
-      summary: Create a new car registration entry
+      summary: Create a new car registration
       operationId: api.create_instance
       requestBody:
         description: Create a new car ID
         content:
           application/json:
             schema:
-              x-body-name: car
-              $ref: "#/components/schemas/Car"
+              x-body-name: instances
+              $ref: "#/components/schemas/Instance"
       responses:
         "201":
           description: Successfully created
         "409":
           description: Provided car ID already exists
-  /cars/{carid}:
+  /instances/{name}:
     get:
       summary: Read one instance
       operationId: api.read_one_instance
       parameters:
-        - $ref: "#/components/parameters/carid"
+        - $ref: "#/components/parameters/name"
       responses:
         "200":
           description: Successfully read one car information
@@ -42,7 +42,7 @@ paths:
       summary: Delete one entry
       operationId: api.delete_instance
       parameters:
-        - $ref: "#/components/parameters/carid"
+        - $ref: "#/components/parameters/name"
       responses:
         "200":
           description: Successfully deleted Car entry
@@ -52,32 +52,32 @@ paths:
       summary: Update Car information
       operationId: api.update_instance
       parameters:
-        - $ref: "#/components/parameters/carid"
+        - $ref: "#/components/parameters/name"
       requestBody:
         description: Create a new entry
         content:
           application/json:
             schema:
-              x-body-name: car
-              $ref: "#/components/schemas/Car"
+              x-body-name: instance
+              $ref: "#/components/schemas/Instance"
       responses:
         "200":
-          description: Car information updated successfully
+          description: Car infomation updated successfully
 components:
   schemas:
-    Car:
+    Instance:
       required:
-        - reg_number
+        - CarID
       properties:
-        engine_type:
+        name:
           type: string
-        reg_number:
+        ami:
           type: string
-        vin:
+        region:
           type: string
   parameters:
-    carid:
-      name: carid
+    name:
+      name: CarID
       description: Car ID number
       in: path
       required: true

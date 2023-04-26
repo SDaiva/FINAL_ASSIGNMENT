@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 8.0.32, for Linux (x86_64)
 --
--- Host: localhost    Database: Assignment_database
+-- Host: localhost    Database: assignment_database
 -- ------------------------------------------------------
 -- Server version	8.0.32-0ubuntu0.22.04.2
 
@@ -16,29 +16,29 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `Cars`
+-- Table structure for table `cars`
 --
 
-DROP TABLE IF EXISTS `Cars`;
+DROP TABLE IF EXISTS `cars`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `Cars` (
-  `CarID` int NOT NULL AUTO_INCREMENT,
-  `Reg_Number` varchar(100) NOT NULL,
-  `VIN` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `Engine_type` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  PRIMARY KEY (`CarID`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+CREATE TABLE `cars` (
+  `carid` int NOT NULL AUTO_INCREMENT,
+  `reg_number` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `vin` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `engine_type` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  PRIMARY KEY (`carid`)
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `Cars`
+-- Dumping data for table `cars`
 --
 
-LOCK TABLES `Cars` WRITE;
-/*!40000 ALTER TABLE `Cars` DISABLE KEYS */;
-INSERT INTO `Cars` VALUES (1,'KS4735','VJ6879865VJ','Elektro'),(3,'NC4598','VB987654MN','DLS'),(4,'AA7711','LKhgh09876R','Gass'),(6,'BN9832','MV7834105KD','Hybrid'),(7,'SP5631','FA9547814CZ','DLS'),(8,'EX2288','TQ5674013DH','Elektro');
-/*!40000 ALTER TABLE `Cars` ENABLE KEYS */;
+LOCK TABLES `cars` WRITE;
+/*!40000 ALTER TABLE `cars` DISABLE KEYS */;
+INSERT INTO `cars` VALUES (1,'ks4735','vj653071ko','dls'),(2,'tt3322','fd097565gh','hybrid '),(3,'nc8734','zd091756sw','elektro'),(4,'aa7711','tg567343om','gass'),(5,'jk9897','po561221yu','hybrid'),(6,'sd5335','ta967886nn','elektro'),(7,'kn8756','lm870022he','dls'),(8,'gg9999','km8734225nb','gass'),(9,'rt5397','ny775599cs','elektro'),(10,'uk1155','tw250846yf','dls'),(11,'dp7641','cr060483lq','gass'),(12,'mv9847','be640672lr','dls');
+/*!40000 ALTER TABLE `cars` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -50,4 +50,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-04-19 15:44:42
+-- Dump completed on 2023-04-26 20:26:34
